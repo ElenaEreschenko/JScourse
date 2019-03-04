@@ -16,9 +16,44 @@
 <code>
     function startFunction () {<br>
     console.log ( arguments.callee )<br>
-    console.log(startFunction["arguments"])<br>
+    for ( var i = 0;  i < arguments.length;  i++ )<br>
+    console.log ( arguments [ i ] )<br>
     }<br>
+    <br>
     startFunction(10, false, "google")<br>
+</code>
+<p>
+    Дополнительно ( 4 балла )<br>
+    Объявите функцию userInfo, которая выводит в консоль:<br>
+    свойство "Дата регистрации: " + свойство data контекста вызова, если свойство registered имеет значение true<br>
+    сообщение "Незарегистрированный пользователь: " + свойство name в противном случае<br>
+    ( используйте переменные в литералах )<br>
+    Создайте два объекта с одинаковым набором свойств:<br>
+    name ( строка )<br>
+    registered ( логическое значение )<br>
+    data ( дата в формате "дд.мм.гг" )<br>
+    Добавьте каждому объекту метод getInfo, который будет ссылкой на функцию userInfo<br>
+    Вызовите каждый метод
+</p>
+<code>
+    function userInfo(){<br>
+    this.registered ? console.log("Дата регистрации: " + `${this.data}`) :<br>
+    console.log("Незарегистрированный пользователь: " + `${this.name}`)<br>
+    }<br>
+    var obj = {<br>
+    name: "Nastya",<br>
+    registered: true,<br>
+    data: new Date().toLocaleString().split(", ")[0],<br>
+    getInfo: userInfo,<br>
+    }<br>
+    var objS = {<br>
+    name: "Vanya",<br>
+    registered: false,<br>
+    data: new Date().toLocaleString().split(", ")[0],<br>
+    getInfo: userInfo,<br>
+    }<br>
+    console.log(obj.getInfo())<br>
+    console.log(objS.getInfo())<br>
 </code>
 </body>
 </html>
