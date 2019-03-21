@@ -1,4 +1,5 @@
-/*Обязательное задание ( 3 балла )
+/*ИСПРАВЛЕННО!!!!!!!!
+Обязательное задание ( 3 балла )
 Создайте массив tags с именами валидных тегов HTML5
 
 Теперь создайте массив classes с именами классов
@@ -12,14 +13,26 @@
 Итерируйте массив tags, создавая соответствующие элементы и вставляя их на страницу,
     добавляя каждому элементу класс из массива classes*/
 
-var tags = [ "div", "p", "span", "a", "li" ];
-var classes = [ 'main', 'text', 'content', 'website', 'tag'];
+var tags = [ "header", "footer", "main", "div", "p" ];
+var classes = [ 'header', 'footer', 'main', 'div', 'p'];
 var style = document.createElement ( 'style' );
 document.head.appendChild ( style );
-for ( var tag in tags ) {
-    var elem = document.createElement ( tags[tag] );
-    elem.className = classes [tag];
-    style.appendChild ( elem );
+style.textContent = `
+  .header, .footer, .main, .div, .p{
+  width: 100px;
+  height: 100px;
+  
+};
+.header{background-color:#0000ff;}
+.footer{background-color:#00ff00;}
+.main{background-color:#00ffff;}
+.div{background-color:#ff0000;}
+.p{background-color:#303030;}
+`
+for ( var t in tags ) {
+    var el = document.createElement ( tags[t] );
+    el.classList.add ( classes[t] );
+    document.body.appendChild ( el );
 }
 
 /*Дополнительно ( 4 балла )
